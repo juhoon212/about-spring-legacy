@@ -1,5 +1,10 @@
 package xyz.itwill07.aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -32,6 +37,29 @@ public class AopAnnotationAdvice {
 		@Before("aopPointCut()")
 		public void beforeLog() {
 			log.info("[before]핵심관심코드 실행 전에 삽입되어 실행될 횡단관심코드");
+		}
+		
+		@After("aopPointCut()")
+		public void afterLog() {
+			log.info("[after] 핵심관심코드 실행 후에 반드시 삽입되어 실행 될 횡단관심코드");
+		}
+		
+		// returning 속성 : 타겟메소드의 반환값을 전달받아 저장하기 위한 매개변수의 이름을 속성값으로 제공
+		@AfterReturning(value = "aopPointCut()", returning = "object")
+		public void afterReturningLog(Object object) {
+			log.info("[after-returning] 핵심관심코드가 정상적으로 실행 후에 삽입되어 실행될 횡단관심코드");
+		}
+		
+		@AfterThrowing(value = "aopPointCut()", throwing = "exception")
+		public void afterThrowingLog(Exception exception) {
+			log.info("[after-ThrowingLog] 핵심관심코드가 정상적으로 실행 후에 삽입되어 실행될 횡단관심코드");
+		}
+		
+		@Around("appPointCut()")
+		public Object aroundLog(ProceedingJoinPoint joinPoint) throws Throwable {
+			Object result = joinPoint.proceed();
+			log.info("[aroundLog] 핵심관심코드가 정상적으로 실행 후에 삽입되어 실행될 횡단관심코드");
+			return result;
 		}
 }
 

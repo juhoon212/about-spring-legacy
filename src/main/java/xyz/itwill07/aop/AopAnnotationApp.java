@@ -3,6 +3,7 @@ package xyz.itwill07.aop;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
 public class AopAnnotationApp {
 	public static void main(String[] args) {
 		ApplicationContext context=new ClassPathXmlApplicationContext("07-5_aopAnnotation.xml");

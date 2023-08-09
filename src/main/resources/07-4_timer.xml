@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean class="xyz.itwill07.aop.ExecutionTimeBean" id="executionTimeBean"></bean>
+	<bean class="xyz.itwill07.aop.ExecutionTimeBean" id="executionTimeBean"></bean> <!-- 핵심관심 코드 -->
 	
-	<bean class="xyz.itwill07.aop.ExecutionTimeAdvice" id="executionTimeAdvice"></bean>
+	<bean class="xyz.itwill07.aop.ExecutionTimeAdvice" id="executionTimeAdvice"></bean> <!-- 횡단관심코드 -->
 	
 	<aop:config>
 		<aop:aspect ref="executionTimeAdvice">
