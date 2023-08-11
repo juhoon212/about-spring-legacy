@@ -9,7 +9,7 @@ import xyz.itwill10.dto.PointUser;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class PointUserServiceImpl implements PointUserService{
 
 	private final PointUserDAO pointUserDAO;
